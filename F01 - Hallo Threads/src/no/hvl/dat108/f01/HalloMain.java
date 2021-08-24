@@ -37,9 +37,8 @@ public class HalloMain {
 
 //Starte mange tråder		
 		for (int i=0; i<10; i++) {
-			final int x = i;
 			Thread tt = new Thread(() -> System.out.println(
-					"Hallo fra tråd " + x));
+					"Hallo fra tråd " + Thread.currentThread().getName()), "" + i);
 			tt.start();
 		}
 		
