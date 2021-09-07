@@ -34,6 +34,7 @@ public class Main {
 						bq.put("" + i + ". mann i køen.");
 					}
 				} catch (Exception e) {
+					System.out.println(e.getMessage());
 				}
 			}
 		};
@@ -48,6 +49,7 @@ public class Main {
 						System.out.println(bq.take());
 					}
 				} catch (Exception e) {
+					System.out.println(e.getMessage());
 				}
 			}
 		};

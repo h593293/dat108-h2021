@@ -12,7 +12,7 @@ import java.util.Random;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Ball extends JPanel {
+public class Ball extends JPanel implements Runnable {
 
 	Color color;
 	private int vx;
@@ -25,6 +25,11 @@ public class Ball extends JPanel {
 		setSize(getPreferredSize());
 		setLocation(new Random().nextInt(PANE_SIZE)-BALL_DIAMETER,
 				new Random().nextInt(PANE_SIZE)-BALL_DIAMETER);
+	}
+	
+	@Override
+	public void run() {
+		animate();
 	}
 	
 	public void animate() {
