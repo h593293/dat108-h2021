@@ -36,7 +36,7 @@ public class F06a {
 	}
 
 	/** En variant av sorter som bruker s.sammenlign(a,b) */
-	private static <T extends Comparable<T>> void sorter(List<T> liste,
+	private static <T> void sorter(List<T> liste,
 			Sammenligner<T> s) {
 		
 		for (int i=0; i<liste.size(); i++) {
