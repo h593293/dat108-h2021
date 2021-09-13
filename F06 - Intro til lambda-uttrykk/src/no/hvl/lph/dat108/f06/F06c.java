@@ -10,7 +10,7 @@ interface Betingelse {
 
 public class F06c {
 	
-	public static List<Integer> filtrer(List<Integer> liste, Betingelse betingelse) {
+	public static List<Integer> plukkUt(List<Integer> liste, Betingelse betingelse) {
 		
 		List<Integer> resultat = new ArrayList<>();
 		
@@ -29,21 +29,21 @@ public class F06c {
 		List<Integer> resultat;
 		
 		//Resultat skal inneholde alle partall fra listen
-		resultat = filtrer(listen, x -> x % 2 == 0); 
+		resultat = plukkUt(listen, x -> x % 2 == 0); 
 		System.out.println(resultat);
 		
 		//Alle tall større enn 0
-		resultat = filtrer(listen, x -> x > 0); 
+		resultat = plukkUt(listen, x -> x > 0); 
 		System.out.println(resultat);
 		
 		//Alle tall større enn 5
-		resultat = filtrer(listen, x -> x > 5); 
+		resultat = plukkUt(listen, x -> x > 5); 
 		System.out.println(resultat);
 
 		//Alle tall større enn 7.
 		//Nei, her gjentar vi oss. Vi lager heller en metode storreEnn() 
 		//som returnerer et "dynamisk" lambda-uttrykk! :)
-		resultat = filtrer(listen, storreEnn(7)); 
+		resultat = plukkUt(listen, storreEnn(7)); 
 		System.out.println(resultat);
 	}
 	
