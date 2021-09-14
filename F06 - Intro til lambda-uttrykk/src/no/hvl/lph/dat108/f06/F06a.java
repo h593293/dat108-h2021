@@ -20,24 +20,11 @@ public class F06a {
 	
 	/** En variant av sorter som bruker a.compareTo(b) */
 	private static <T extends Comparable<T>> void sorter(List<T> liste) {
-		
-		for (int i=0; i<liste.size(); i++) {
-			for (int j=1; j<liste.size(); j++) {
-				T a = liste.get(j-1);
-				T b = liste.get(j);
-				
-				if (a.compareTo(b) > 0) { // <--- Her
-					
-					liste.set(j-1, b);
-					liste.set(j, a);
-				}
-			}
-		}
+		sorter(liste, (a,b) -> a.compareTo(b));
 	}
 
 	/** En variant av sorter som bruker s.sammenlign(a,b) */
-	private static <T> void sorter(List<T> liste,
-			Sammenligner<T> s) {
+	private static <T> void sorter(List<T> liste, Sammenligner<T> s) {
 		
 		for (int i=0; i<liste.size(); i++) {
 			for (int j=1; j<liste.size(); j++) {
