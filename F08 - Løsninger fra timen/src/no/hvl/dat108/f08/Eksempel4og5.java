@@ -27,7 +27,7 @@ public class Eksempel4og5 {
 		//Med streams:
 		people.stream()
 				.filter(p -> p.getFirstName().startsWith("C"))
-				.forEach(System.out::println);
+				.forEach(p -> System.out.println(p));
 		
 		//2 - Lage en liste av etternavnene til de som er over 50 år
 		
