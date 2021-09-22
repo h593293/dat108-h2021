@@ -1,13 +1,10 @@
 package no.hvl.dat108.f07;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class EksempelX_ikke_brukt {
 
 	public static void main(String[] args) {
 
-		List<String> tekster = Arrays.asList("Atle", "Lars", "Per");
+//		List<String> tekster = Arrays.asList("Atle", "Lars", "Per");
 
 		// Predicate<T>
 		// Vi kan f.eks. lage en metode printKunDeSomErGyldige() som tar inn
