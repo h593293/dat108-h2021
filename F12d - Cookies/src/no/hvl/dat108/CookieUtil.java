@@ -3,7 +3,7 @@ package no.hvl.dat108;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Arrays;
+import java.util.stream.Stream;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,26 +24,49 @@ public class CookieUtil {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static String getCookieFromRequest(HttpServletRequest request, String navn) {
+		
 		String verdi = null;
-		try {
-			verdi = Arrays.stream(request.getCookies())
+		Cookie[] cookies = request.getCookies();
+		
+		if (cookies != null) {
+			
+			verdi = Stream.of(cookies)
 					.filter(c -> c.getName().equals(navn))
 					.map(Cookie::getValue)
-					.findFirst().orElseThrow();
-
-			verdi = URLDecoder.decode(verdi, CHARACTER_ENCODING);
-
-		} catch (NullPointerException e) {
-			// If no cookie in request.
-			// null is returned
+					.findFirst().orElse(null);
 			
-		} catch (UnsupportedEncodingException e) {
-			// Should never happen
-			e.printStackTrace();
+			try {
+				verdi = URLDecoder.decode(verdi, CHARACTER_ENCODING);
+			} catch (UnsupportedEncodingException e) {
+				// Should never happen
+				e.printStackTrace();
+			}
 		}
+		
 		return verdi;
 	}
+
+//	public static String getCookieFromRequest(HttpServletRequest request, String navn) {
+//		String verdi = null;
+//		try {
+//			verdi = Arrays.stream(request.getCookies())
+//					.filter(c -> c.getName().equals(navn))
+//					.map(Cookie::getValue)
+//					.findFirst().orElseThrow();
+//
+//			verdi = URLDecoder.decode(verdi, CHARACTER_ENCODING);
+//
+//		} catch (NullPointerException e) {
+//			// If no cookie in request.
+//			// null is returned
+//			
+//		} catch (UnsupportedEncodingException e) {
+//			// Should never happen
+//			e.printStackTrace();
+//		}
+//		return verdi;
+//	}
 	
 }
