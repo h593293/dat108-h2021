@@ -1,6 +1,6 @@
 package no.hvl.dat108;
 
-public class LogginnUtil {
+public class LoggInnUtil {
 	
 	//Logge inn
 	
