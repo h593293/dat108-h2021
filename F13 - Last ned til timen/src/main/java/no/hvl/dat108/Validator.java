@@ -1,6 +1,10 @@
 package no.hvl.dat108;
 
 public class Validator {
+	
+	public static final String ANY_LETTER = "[A-Za-zÆØÅæøå]";
+	public static final String ANY_LETTER_OR_DIGIT = "[A-Za-zÆØÅæøå\\d]";
+	public static final String THREE_OR_MORE_TIMES = "{3,}";
 
     /**
      * @param username Brukernavnet som skal valideres
@@ -11,6 +15,13 @@ public class Validator {
      * Brukernavnet kan ikke begynne med et tall.
      */
     public static boolean isGyldigUsername(String username) {
-    	return false;
+    	
+    	if (username == null) {
+    		return false;
+    	}
+    	return username.matches("^" 
+    			+ ANY_LETTER 
+    			+ ANY_LETTER_OR_DIGIT + THREE_OR_MORE_TIMES
+    			+ "$");
     }
 }

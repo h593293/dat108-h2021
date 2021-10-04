@@ -24,6 +24,11 @@ public class LoggInnServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
     	
         // Inn noe kode her i forbindelse med evt. feilmeldinger?
+    	String feilmelding = "";
+    	String feilkode = request.getParameter("feilkode");
+    	if (feilkode != null && feilkode.equals("invalidusername")) {
+    		feilmelding = "Ugyldig brukernavn. Prøv igjen.";
+    	} 
         
         response.setContentType("text/html; charset=ISO-8859-1");
 
@@ -38,6 +43,7 @@ public class LoggInnServlet extends HttpServlet {
         out.println("<body>");
         
         // Inn noe kode her i forbindelse med evt. feilmeldinger?
+        out.println(feilmelding); //evt. html for RØD !!!
 
         out.println("<form action=\"" + LOGIN_URL + "\" method=\"post\">");
         out.println("  <fieldset>");
@@ -57,12 +63,30 @@ public class LoggInnServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 
+    	String brukernavn = request.getParameter("username");
+    	
     	// Sjekke at vi har gyldig brukernavn
+    	if (!Validator.isGyldigUsername(brukernavn)) {
+    		//Gå tilbake til innloggingsskjema med feilmelding
+    		
+    		response.sendRedirect(LOGIN_URL + "?feilkode=invalidusername");
+    		
+    	} else {
+            // Innlogging av bruker, evt. feilhåndtering
+            // Oppretting av sesjonsdata for bruker
+    		LoggInnUtil.loggInn(request, brukernavn);
+        	
+            response.sendRedirect(WEBSHOP_URL);
+    	}
     	
-        // Innlogging av bruker, evt. feilhåndtering
     	
-        // Oppretting av sesjonsdata for bruker
-    	
-        response.sendRedirect(WEBSHOP_URL);
     }
 }
+
+
+
+
+
+
+
+
