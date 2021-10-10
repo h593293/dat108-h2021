@@ -1,4 +1,4 @@
-package no.hvl.dat108.util;
+package no.hvl.dat108.f15util;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import no.hvl.dat108.f15util.PassordUtil;
 
-class PassorUtilTest {
+class PassordUtilTest {
 	
 	private static final String RIKTIG_PASSORD = "Abc de fgh";
 	private static final String FEIL_PASSORD = "Java er kjedelig";
