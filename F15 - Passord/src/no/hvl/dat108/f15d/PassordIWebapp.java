@@ -10,7 +10,7 @@ public class PassordIWebapp {
 		/*
 		 * Dette er en demo av hvordan PassordUtil kan brukes i en webapp.
 		 * 
-		 * En bruker registrerer seg med brukernavn og valgtPassord. Et brukerobjekt med
+		 * En bruker registrerer seg med brukernavn og passord. Et brukerobjekt med
 		 * brukernavn og hashet passord lagres i databasen. Brukeren blir logget på.
 		 * 
 		 * Tiden går ... og brukeren er logget ut.
@@ -30,9 +30,19 @@ public class PassordIWebapp {
 		
 		// En en doPost() på serveren gjøres dette ...
 		
-		// Validerer og oppretter Bruker-objekt
-		// NB! Slik konstruktøren til Bruker er laget er det tilfeldig salt og 
-		//     hashet passord som blir lagret, IKKE passordet i klartekst!
+		// Validerer brukernavn og passord
+		// Her bør man kanskje kreve at passordet:
+		// - Er over en viss lengde, f.eks. 8 tegn
+		// - Ikke finnes i liste over x mest brukte passord
+		// ...
+
+		// Oppretter Bruker-objekt
+		// NB! Slik Bruker-klassen og konstruktøren til Bruker er laget 
+		//     er det IKKE passordet i klartekst som blir lagret!, men
+		//     et tilfeldig salt og hashet passord. 
+		//     ALDRI lagre passord i klartekst!!!
+		//     Det er mulig at det hadde vært bedre om konstruktøren hadde
+		//     brukernavn, salt og hash som parametre dirtekte.
 		Bruker bruker = new Bruker(brukernavn, passord);
 		
 		// Litt utskrift ...
