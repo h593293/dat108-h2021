@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import no.hvl.dat108.f15util.PassordUtil;
-
 class PassordUtilTest {
 	
 	private static final String RIKTIG_PASSORD = "Abc de fgh";
